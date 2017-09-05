@@ -41,7 +41,9 @@ pin. For example, the AR7700, connect the Raspberry Pi's 5V output to the
 AR7700 5V rail, and for the Spektrum Remote Receiver unit, connect the
 Raspberry Pi's 3.3V output to the receiver's 3.3V line)
 * Connect the receiver's signal line to the Raspberry Pi RXD UART GPIO pin
-(GPIO 15 / pin 10 on the Raspberry Pi 3)
+(GPIO 15 / pin 10 on the Raspberry Pi 3). Beware that the Pi's GPIO pins
+operate at 3.3V, so if your receiver outputs a 5V signal, you'll want a
+level-shifter to avoid ruining the Pi's GPIOs.
 
 ![](img/rx_rpi.png)
 
@@ -109,18 +111,25 @@ Power on the transmitter and run `python main.py` from within the cloned repo
 on the Raspberry Pi. The code should output the values received from the
 transmitter.
 
-~[](img/main_output.png)
+![](img/main_output.png)
 
 Try toggling the transmitter power and seeing that the signals received stop
 and start with the transmitter power. 
 
-## Background
-I wanted to put a Raspberry Pi on a quadcopter, so I needed to find a way to
-connect the Pi to the radio receiver used to receive control signals from the
-transmitter on the ground. It's a mess out there with receiver protocols. There
-are a lot of them and they aren't all so well documented.
+(optional) If you connected the UART TXD (GPIO 14 / pin 14) to a flight control
+board set up to receive data according to the remote receiver protocol, you'll
+be able to also view the RC signals in, for example, Betaflight.
 
-First I had a receiver outputting PWM signals. PWM signals are product of the
+## Background
+I wanted to put a Raspberry Pi on a quadcopter and use it for some of the
+quadcopter's control, so I needed to find a way to connect the Pi to the radio
+receiver used to receive control signals from the transmitter on the ground.
+Honestly, it's a mess out there with radio receivers. There are a lot of
+receivers out there with all sorts of available output options. Figuring out
+which receiver 
+
+I had a receiver (the AR660) onhand that output PWM signals.
+PWM signals are product of the
 days of DC motors and simple servos and not great for interfacing with a
 Raspberry Pi.
 
