@@ -53,18 +53,38 @@ the Raspberry Pi 3) to the flight control board if you would like to forward
 the data from the receiver to the Raspberry Pi to the flight control board.
 
 ## Raspberry Pi configuration
-The UART ports on the Raspberry Pi 3 have a rather complicated setup as
-documented [here](https://www.raspberrypi.org/documentation/configuration/uart.md)
-and blogged about [here](https://spellfoundry.com/2016/05/29/configuring-gpio-serial-port-raspbian-jessie-including-pi-3/).
-There are two UART ports, `/dev/ttyAMA0` and `/dev/ttyS0`. 
-The `/dev/ttyAMA0` port we want to use with the UART pins is used for 
-bluetooth communication by default, so we'll either have to move the port used
-by bluetooth or disable bluetooth altogether.
-To move bluetooth, add
-`dtoverlay=pi3-miniuart-bt` to the Pi's `/boot/config.txt`
-To disable blutooth, add
-`dtoverlay=pi3-disable-bt` to the Pi's `/boot/config.txt`
-I'd recommend disabling bluetooth to keep life simple.
+
+We need to setup the software environment and the serial port.
+
+### Software requirements
+* Python 2.7
+* Python pip. Install with `sudo apt install python-pip`
+* pySerial. Install with `sudo pip install pyserial`
+
+### Serial port setup
+The serial communication will use the UART pins on the Raspberry Pi 3 and have
+a rather complicated setup as documented
+[here](https://www.raspberrypi.org/documentation/configuration/uart.md)
+and nicely blogged about
+[here](https://spellfoundry.com/2016/05/29/configuring-gpio-serial-port-raspbian-jessie-including-pi-3/).
+There are two UART ports: a hardware UART port and a "mini" UART port which are
+accessed at `/dev/ttyAMA0` and `/dev/ttyS0`, respectively.
+
+There are a some defaults that confound our use of GPIOs 15 and 14 for serial
+communication with the receiver:
+* By default, GPIOs 15 and 14 are connected to the mini UART at `/dev/ttyS0`
+because the bluetooth module is using the hardware UART at `/dev/ttyAMA0`.
+Unfortunately, the mini UART is flakier than the hardware UART, so we'd like to
+connect GPIOs 15 and 14 to hardware UART at `/dev/ttyAMA0`. To do so, we need
+to either swap the port used by bluetooth or disable bluetooth.
+  * To swap the UART port used by the bluetooth module, add 
+  `dtoverlay=pi3-miniuart-bt` to the Pi's `/boot/config.txt`
+  * To disable the bluetooth module entirely, add
+  `dtoverlay=pi3-disable-bt` to the Pi's `/boot/config.txt` (recommended)
+* By default, the Raspberry Pi uses the non-bluetooth serial port to provide
+a serial console. We need to disable the console to allow the port to be used
+for our serial communication with the receiver. To do so, run
+`sudo raspi-config`
 
 ## Run the code
 Power the transmitter on and run `python main.py` on the Raspberry Pi. The code
@@ -81,3 +101,5 @@ are a lot of them and they aren't all so well documented.
 First I had a receiver outputting PWM signals. PWM signals are product of the
 days of DC motors and simple servos and not great for interfacing with a
 Raspberry Pi.
+
+Spektrum documents the remote receiver protocol [here](https://www.spektrumrc.com/ProdInfo/Files/Remote%20Receiver%20Interfacing%20Rev%20A.pdf)
