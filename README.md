@@ -42,6 +42,12 @@ AR7700 5V rail, and for the Spektrum Remote Receiver unit, connect the
 Raspberry Pi's 3.3V output to the receiver's 3.3V line)
 * Connect the receiver's signal line to the Raspberry Pi RXD UART GPIO pin
 (GPIO 15 / pin 10 on the Raspberry Pi 3)
+
+![](img/rx_rpi.png)
+
+Diagram of a remote receiver connected to the Raspberry Pi. Note if your
+receiver uses 3.3V or 5V input power.
+
 * (optional) Connect the Raspberry Pi's TXD UART GPIO pin (GPIO 14 / pin 8 on
 the Raspberry Pi 3) to the flight control board.
 
