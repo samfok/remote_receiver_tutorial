@@ -54,12 +54,14 @@ the data from the receiver to the Raspberry Pi to the flight control board.
 
 ## Raspberry Pi configuration
 
-We need to setup the software environment and the serial port.
+We need to setup the software environment and the serial port before running
+the code.
 
 ### Software requirements
 * Python 2.7
-* Python pip. Install with `sudo apt install python-pip`
-* pySerial. Install with `sudo pip install pyserial`
+* Python pip - Install with `sudo apt install python-pip`
+* pySerial - Install with `sudo pip install pyserial`
+* A clone of this tutorial repo
 
 ### Serial port setup
 The serial communication will use the UART pins on the Raspberry Pi 3 and have
@@ -84,29 +86,30 @@ to either swap the port used by bluetooth or disable bluetooth.
 * By default, the Raspberry Pi uses the non-bluetooth serial port to provide
 a serial console. We need to disable the console to allow the port to be used
 for our serial communication with the receiver. To do so, run
-`sudo raspi-config`
-
-![](img/rpi_config0.png)
+`sudo raspi-config` and then
 
 Select `Interfacing Options`
 
-![](img/rpi_config1.png)
+![](img/rpi_config0.png)
 
 Select `P6 Serial`
 
-![](img/rpi_config2.png)
+![](img/rpi_config1.png)
 
 Disable the login shell over serial
 
-![](img/rpi_config3.png)
+![](img/rpi_config2.png)
 
 Enable the serial port hardware
 
+![](img/rpi_config3.png)
+
 ## Run the code
-Power the transmitter on and run `python main.py` on the Raspberry Pi. The code
-should output the values received from the transmitter. Toggle the transmitter
-power and see that the signals received stop and start with the transmitter
-power.
+Power on the transmitter and run `python main.py` from within the cloned repo
+on the Raspberry Pi. The code should output the values received from the
+transmitter.
+Toggle the transmitter power and see that the signals received stop and start
+with the transmitter power.
 
 ## Background
 I wanted to put a Raspberry Pi on a quadcopter, so I needed to find a way to
