@@ -12,6 +12,8 @@ receiver, but you only need one that is compatible with
 your transmitter and has a Spektrum remote receiver protocol output. I assume
 that your transmitter and receiver have already been bound. Instructions
 for binding transmitters and receivers should be found with the manufacturer.
+
+![Example receivers AR7700 (left) and DSMX remote receiver(right)](img/receivers.jpg)
 * A Raspberry Pi: I used a Raspberry Pi 3 with Raspbian Stretch installed.
 It may actually be easier to interface with older Raspberry Pis and OS 
 distributions because of how Raspberry Pi's now handle their UART ports.
