@@ -15,8 +15,8 @@ transmitter but others should work too
 * A radio receiver: I used a Spektrum
 [AR7700](http://spektrumrc.com/Products/Default.aspx?ProdID=SPMAR7700)
 and a Spektrum
-[DSMX remote receiver](http://spektrumrc.com/Products/Default.aspx?ProdID=SPMAR7700)
-, but you only need one that is compatible with
+[DSMX remote receiver](http://spektrumrc.com/Products/Default.aspx?ProdID=SPM9645)
+ (came with the AR7700), but you only need one that is compatible with
 your transmitter and has a Spektrum remote receiver protocol output. I assume
 that your transmitter and receiver have already been bound. Instructions
 for binding transmitters and receivers should be found with the manufacturer.
@@ -58,6 +58,11 @@ receiver uses 3.3V or 5V input power.
 * (optional) Connect the Raspberry Pi's TXD UART GPIO pin (GPIO 14 / pin 8 on
 the Raspberry Pi 3) to the flight control board if you would like to forward
 the data from the receiver to the Raspberry Pi to the flight control board.
+
+![](img/complete_build.jpg)
+
+Picture of the receiver unit (foreground, right) and the optional flight
+control board (foreground, left) connected to the Raspberry Pi.
 
 ## Raspberry Pi configuration
 
