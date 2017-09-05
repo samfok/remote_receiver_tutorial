@@ -108,8 +108,11 @@ Enable the serial port hardware
 Power on the transmitter and run `python main.py` from within the cloned repo
 on the Raspberry Pi. The code should output the values received from the
 transmitter.
-Toggle the transmitter power and see that the signals received stop and start
-with the transmitter power.
+
+~[](img/main_output.png)
+
+Try toggling the transmitter power and seeing that the signals received stop
+and start with the transmitter power. 
 
 ## Background
 I wanted to put a Raspberry Pi on a quadcopter, so I needed to find a way to
