@@ -5,14 +5,18 @@ Raspberry Pi over the Spektrum remote receiver (aka Spektrum satellite)
 protocol.
 
 ## You will need
-* A radio transmitter: I used the Spektrum DX6 transmitter but others should
-work too
+* A radio transmitter: I used the Spektrum
+[DX6](http://spektrumrc.com/Products/Default.aspx?ProdId=SPMR6750)
+transmitter but others should work too
 
 ![](img/transmitter.jpg)
 
 
-* A radio receiver: I used a Spektrum AR7700 and a Spektrum DSMX remote
-receiver, but you only need one that is compatible with
+* A radio receiver: I used a Spektrum
+[AR7700](http://spektrumrc.com/Products/Default.aspx?ProdID=SPMAR7700)
+and a Spektrum
+[DSMX remote receiver](http://spektrumrc.com/Products/Default.aspx?ProdID=SPMAR7700)
+, but you only need one that is compatible with
 your transmitter and has a Spektrum remote receiver protocol output. I assume
 that your transmitter and receiver have already been bound. Instructions
 for binding transmitters and receivers should be found with the manufacturer.
@@ -30,7 +34,8 @@ distributions because of how Raspberry Pi's now handle their UART ports.
 
 * (optional) A flight control board: If you want to send rc signals to a flight
 control board capable of handling the remote receiver protocol. I used an
-Omnibus F3 Pro.
+Omnibus F3 Pro. Configuring flight control boards is beyond the scope of this
+tutorial.
 
 ![](img/flight_control_board.jpg)
 
@@ -116,9 +121,10 @@ transmitter.
 Try toggling the transmitter power and seeing that the signals received stop
 and start with the transmitter power. 
 
-(optional) If you connected the UART TXD (GPIO 14 / pin 14) to a flight control
-board set up to receive data according to the remote receiver protocol, you'll
-be able to also view the RC signals in, for example, Betaflight.
+(optional) If you [connected](#Hardware wiring) the UART TXD (GPIO 14 / pin 14)
+to a flight control board set up to receive data according to the remote
+receiver protocol, you'll be able to also view the RC signals in, for example,
+Betaflight.
 
 ## Background
 I wanted to put a Raspberry Pi on a quadcopter and use it for some of the
@@ -128,9 +134,26 @@ Honestly, it's a mess out there with radio receivers. There are a lot of
 receivers out there with all sorts of available output options. Figuring out
 which receiver 
 
-I had a receiver (the AR660) onhand that output PWM signals.
-PWM signals are product of the
-days of DC motors and simple servos and not great for interfacing with a
-Raspberry Pi.
+I started with a receiver (the Spektrum 
+[AR610](http://spektrumrc.com/Products/Default.aspx?ProdID=SPMAR610))
+onhand that output pulse-width modulated (PWM) signals.
+I found that it is possible to read PWM signals using the Raspberry Pi's GPIO
+pins and interrupts even though the Pi does not run a real-time operating
+system because the PWM signals output by the receiver were slow
+enough that the timing of the OS didn't significantly affect the signal
+measurements. Still, PWM signals are product of the days of DC motors and
+servos and not great for interfacing with a Raspberry Pi:
+1. Each channel requires its own wire and pin, so your build becomes
+a rat's nest quickly. More wires and pins = more opportunities for circuit
+shorts and opens.
+2. You'll always wonder whether the OS is going to hiccup and skew a
+pulse-width measurement during flight and cause your build to crash...
+
+The first issue was the biggest issue in my mind since I had to maintain the
+quadcopter build (i.e. make sure all of the wires went to the right places and
+stayed there on a platform subject to crashes and lots of vibrations)
 
 Spektrum documents the remote receiver protocol [here](https://www.spektrumrc.com/ProdInfo/Files/Remote%20Receiver%20Interfacing%20Rev%20A.pdf)
+
+## Questions and Comments
+Raise an issue or drop me a message.
