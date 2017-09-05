@@ -54,7 +54,7 @@ the data from the receiver to the Raspberry Pi to the flight control board.
 
 ## Raspberry Pi configuration
 The UART ports on the Raspberry Pi 3 have a rather complicated setup as
-documented [here](https://spellfoundry.com/2016/05/29/configuring-gpio-seria)
+documented [here](https://www.raspberrypi.org/documentation/configuration/uart.md)
 and blogged about [here](https://spellfoundry.com/2016/05/29/configuring-gpio-serial-port-raspbian-jessie-including-pi-3/).
 There are two UART ports, `/dev/ttyAMA0` and `/dev/ttyS0`. 
 The `/dev/ttyAMA0` port we want to use with the UART pins is used for 
