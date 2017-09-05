@@ -86,6 +86,22 @@ a serial console. We need to disable the console to allow the port to be used
 for our serial communication with the receiver. To do so, run
 `sudo raspi-config`
 
+![](img/rpi_config0.png)
+
+Select `Interfacing Options`
+
+![](img/rpi_config1.png)
+
+Select `P6 Serial`
+
+![](img/rpi_config2.png)
+
+Disable the login shell over serial
+
+![](img/rpi_config3.png)
+
+Enable the serial port hardware
+
 ## Run the code
 Power the transmitter on and run `python main.py` on the Raspberry Pi. The code
 should output the values received from the transmitter. Toggle the transmitter
