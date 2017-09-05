@@ -151,9 +151,18 @@ pulse-width measurement during flight and cause your build to crash...
 
 The first issue was the biggest issue in my mind since I had to maintain the
 quadcopter build (i.e. make sure all of the wires went to the right places and
-stayed there on a platform subject to crashes and lots of vibrations)
+stayed there on a platform subject to crashes and lots of vibrations. oy.).
+To move on from PWM, I obtained an AR7700, which had a nice set of output
+options (pulse position modulation (PPM), remote receiver output (Remote RX),
+and bidirectional serial receiver link (SRXL)),
+each of which used a single wire to communicate all of the channel data.
+PPM posed the same kind of problem of measuring pulse timing as PWM and so was
+eliminated as a good option. Remote receiver was selected because it was a
+proper digital, serial protocol and used by the remote receiver units, which
+are much smaller than the AR7700 and so attractive for use on quadcopters.
 
-Spektrum documents the remote receiver protocol [here](https://www.spektrumrc.com/ProdInfo/Files/Remote%20Receiver%20Interfacing%20Rev%20A.pdf)
+Spektrum documents the remote receiver protocol
+[here](https://www.spektrumrc.com/ProdInfo/Files/Remote%20Receiver%20Interfacing%20Rev%20A.pdf)
 
 ## Questions and Comments
 Raise an issue or drop me a message.
