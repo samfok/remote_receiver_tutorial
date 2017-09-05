@@ -7,13 +7,14 @@ protocol.
 ## You will need
 * A radio transmitter: I used the Spektrum DX6 transmitter but others should
 work too
+![](img/transmitter.jpg)
 * A radio receiver: I used a Spektrum AR7700 and a Spektrum DSMX remote
 receiver, but you only need one that is compatible with
 your transmitter and has a Spektrum remote receiver protocol output. I assume
 that your transmitter and receiver have already been bound. Instructions
 for binding transmitters and receivers should be found with the manufacturer.
 
-![](img/receivers.jpg)
+![](img/receiver.jpg)
 
 Example receivers capable of communicating over the remote receiver serial
 protocol: AR7700 (left) and DSMX remote receiver(right)
@@ -21,9 +22,11 @@ protocol: AR7700 (left) and DSMX remote receiver(right)
 * A Raspberry Pi: I used a Raspberry Pi 3 with Raspbian Stretch installed.
 It may actually be easier to interface with older Raspberry Pis and OS 
 distributions because of how Raspberry Pi's now handle their UART ports.
+![](img/rpi.jpg)
 * (optional) A flight control board: If you want to send rc signals to a flight
 control board capable of handling the remote receiver protocol. I used an
 Omnibus F3 Pro.
+![](img/flight_control_board.jpg)
 
 ## Hardware wiring
 * Connect the receiver's ground to the Raspberry Pi ground.
