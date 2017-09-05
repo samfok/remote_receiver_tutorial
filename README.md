@@ -45,11 +45,12 @@ Raspberry Pi's 3.3V output to the receiver's 3.3V line)
 
 ![](img/rx_rpi.png)
 
-Diagram of a remote receiver connected to the Raspberry Pi. Note if your
+Diagram of a remote receiver connected to the Raspberry Pi. Note whether your
 receiver uses 3.3V or 5V input power.
 
 * (optional) Connect the Raspberry Pi's TXD UART GPIO pin (GPIO 14 / pin 8 on
-the Raspberry Pi 3) to the flight control board.
+the Raspberry Pi 3) to the flight control board if you would like to forward
+the data from the receiver to the Raspberry Pi to the flight control board.
 
 ## Raspberry Pi configuration
 The UART ports on the Raspberry Pi 3 have a rather complicated setup.
