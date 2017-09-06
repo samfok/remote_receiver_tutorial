@@ -1,7 +1,7 @@
 # remote_receiver_tutorial
 
 This tutorial demonstrates interfacing a radio transmitter and receiver with a
-Raspberry Pi over the Spektrum remote receiver (aka Spektrum satellite)
+Raspberry Pi over the Spektrum remote receiver (aka Spektrum Satellite)
 protocol.
 
 ## You will need
@@ -124,7 +124,11 @@ transmitter.
 ![](img/main_output.png)
 
 Try toggling the transmitter power and seeing that the signals received stop
-and start with the transmitter power. 
+and start with the transmitter power. Don't forget to peruse the code to
+see the gory details about the protocol implementation.
+Spektrum documents the remote receiver protocol
+[here](https://www.spektrumrc.com/ProdInfo/Files/Remote%20Receiver%20Interfacing%20Rev%20A.pdf)
+
 
 (optional) If you [connected](#Hardware wiring) the UART TXD (GPIO 14 / pin 14)
 to a flight control board set up to receive data according to the remote
@@ -137,7 +141,7 @@ quadcopter's control, so I needed to find a way to connect the Pi to the radio
 receiver used to receive control signals from the transmitter on the ground.
 Honestly, it's a mess out there with radio receivers. There are a lot of
 receivers out there with all sorts of available output options. Figuring out
-which receiver 
+which receiver and protocol to use could eat up a lot of time.
 
 I started with a receiver (the Spektrum 
 [AR610](http://spektrumrc.com/Products/Default.aspx?ProdID=SPMAR610))
@@ -165,9 +169,6 @@ PPM posed the same kind of problem of measuring pulse timing as PWM and so was
 eliminated as a good option. Remote receiver was selected because it was a
 proper digital, serial protocol and used by the remote receiver units, which
 are much smaller than the AR7700 and so attractive for use on quadcopters.
-
-Spektrum documents the remote receiver protocol
-[here](https://www.spektrumrc.com/ProdInfo/Files/Remote%20Receiver%20Interfacing%20Rev%20A.pdf)
 
 ## Questions and Comments
 Raise an issue or drop me a message.
