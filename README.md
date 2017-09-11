@@ -130,7 +130,7 @@ Spektrum documents the remote receiver protocol
 [here](https://www.spektrumrc.com/ProdInfo/Files/Remote%20Receiver%20Interfacing%20Rev%20A.pdf)
 
 
-(optional) If you [connected](#Hardware wiring) the UART TXD (GPIO 14 / pin 14)
+(optional) If you [connected](#hardware_wiring) the UART TXD (GPIO 14 / pin 14)
 to a flight control board set up to receive data according to the remote
 receiver protocol, you'll be able to also view the RC signals in, for example,
 Betaflight.
