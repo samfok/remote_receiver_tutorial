@@ -82,7 +82,7 @@ ser = serial.Serial(
     bytesize=serial.EIGHTBITS,
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE)
-N_CHAN = 18
+N_CHAN = 13
 data = None
 servo_position = [0 for i in range(N_CHAN)]
 try:
